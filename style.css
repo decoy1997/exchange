@@ -276,3 +276,85 @@ body {
         transform: translate(-1px, 1px);
     }
 }
+/* --- СТИЛИ ДЛЯ СЕКЦИИ "ОБО МНЕ" --- */
+.about-section {
+    background: linear-gradient(to bottom, #3A1E0A, #201008); /* Ваш выбранный градиент */
+    padding: 60px 0; /* Вертикальные отступы для секции */
+    color: #e0e0e0; /* Основной цвет текста для этой секции, если не переопределен */
+}
+
+.about-section .container {
+    /* Контейнер уже центрирован, можно добавить специфичные отступы если нужно */
+    /* max-width: 900px; /* Можно ограничить ширину контента в этой секции для лучшей читаемости */
+}
+
+.about-photo {
+    display: block;
+    margin: 0 auto 30px auto; /* Центрирование фото и отступ снизу */
+    width: 180px; /* Ширина фото */
+    height: 180px; /* Высота фото (для идеального круга) */
+    border-radius: 50%; /* Делаем фото круглым */
+    border: 4px solid #ff7f00; /* Оранжевая неоновая рамка */
+    object-fit: cover; /* Гарантирует, что изображение заполнит круг, сохраняя пропорции */
+    box-shadow: 0 0 15px #ff7f00, 0 0 25px #ff7f00; /* Неоновое свечение для рамки */
+}
+
+.section-title.about-title { /* Стили для заголовка "Мой опыт и подход" */
+    text-align: center;
+    font-size: 2.5em; /* Размер заголовка секции */
+    color: #e0e0e0; /* Цвет заголовка */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Оранжевое неоновое свечение */
+}
+
+.about-subsection {
+    margin-bottom: 30px; /* Отступ между подразделами */
+    padding: 0 15px; /* Небольшие боковые отступы для текста, если нужно */
+}
+
+.about-subsection:last-child {
+    margin-bottom: 0; /* Убираем отступ у последнего подраздела */
+}
+
+.subsection-title { /* Стили для подзаголовков h3 */
+    font-size: 1.8em;
+    color: #00f2ff; /* Голубой неоновый цвет для подзаголовков */
+    margin-bottom: 15px;
+    text-align: center; /* Центрируем подзаголовки */
+    /* text-shadow: 0 0 5px #00f2ff; /* Легкое голубое свечение, если хотите */
+}
+
+.about-subsection p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #c0c0c0; /* Цвет текста абзацев */
+    text-align: left; /* Текст абзацев выравниваем по левому краю для лучшей читаемости */
+    /* Для лучшей читаемости можно ограничить максимальную ширину текстовых блоков, если они внутри .container кажутся слишком широкими */
+    max-width: 700px; /* Например, ограничиваем ширину абзацев */
+    margin-left: auto;  /* Центрируем блок абзаца, если max-width задан */
+    margin-right: auto; /* Центрируем блок абзаца, если max-width задан */
+}
+
+/* Адаптивность для секции "Обо мне" */
+@media (max-width: 768px) {
+    .about-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .section-title.about-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .subsection-title {
+        font-size: 1.5em;
+    }
+
+    .about-subsection p {
+        font-size: 1em;
+        text-align: justify; /* На мобильных можно попробовать justify для абзацев */
+    }
+}
