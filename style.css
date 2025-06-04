@@ -15,7 +15,7 @@ body {
 
 /* --- СТИЛИ ДЛЯ ХЕДЕРА (полная восстановленная версия) --- */
 .site-header {
-    background: radial-gradient(ellipse at center, #6B2D00 0%, #2E1000 100%); 
+    background: #111; 
     padding: 15px 0;
     border-bottom: 1px solid #ff7f00; 
     position: sticky; 
