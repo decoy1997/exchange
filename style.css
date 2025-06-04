@@ -133,7 +133,7 @@ body {
         display: block; 
     }
     .hero-section {
-    background: radial-gradient(ellipse at center, #29002e 0%, #0F0A1A 100%); /* Ваш выбранный фиолетово-баклажановый цвет */
+    background: radial-gradient(ellipse at center, #6B2D00 0%, #2E1000 100%); /* Ваш выбранный фиолетово-баклажановый цвет */
     padding: 80px 0; /* Вертикальные отступы, можно настроить по вкусу */
     text-align: center; /* Центрируем текст внутри секции */
     min-height: 70vh; /* Минимальная высота секции, чтобы она занимала значительную часть экрана. Можно настроить. */
