@@ -143,6 +143,54 @@
         </div>
     </div>
 </section>
+    <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title faq-title">FAQ</h2>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                        Как проходит первая консультация?
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="faq-answer-1" class="faq-answer" role="region" hidden>
+                        <p>Первоначальная консультация, в зависимости от запроса, длится до одного часа.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                        Как определяется стоимость ваших услуг?
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="faq-answer-2" class="faq-answer" role="region" hidden>
+                        <p>Стоимость услуг зависит от индивидуального подхода, сложности вашего запроса и времени, необходимого для разработки персонального плана.</p>
+                        </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                        Для кого подходят ваши консультации и в чем их преимущество?
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="faq-answer-3" class="faq-answer" role="region" hidden>
+                        <p>Я работаю как с новичками, так и с опытными профессионалами. Ключевое преимущество – это индивидуальный подход и экономия вашего времени: вы получаете структурированную, адаптированную под вас информацию, избавляя себя от необходимости многочасового самостоятельного изучения различных источников.</p>
+                    </div>
+                </div>
+
+                </div>
+        </section>
+
+        ```
+
+**Пояснения к HTML:**
+
+* Каждый вопрос-ответ обернут в `<div class="faq-item">`.
+* Вопрос сделан кнопкой (`<button class="faq-question">`) для лучшей доступности и семантики кликабельного элемента.
+    * `aria-expanded="false"`: Указывает, что ответ по умолчанию скрыт.
+    * `aria-controls="faq-answer-X"`: Связывает кнопку с соответствующим блоком ответа.
+    * `<span class="faq-icon" aria-hidden="true"></span>`: Пустой `span` для иконки (например, `+`/`-` или стрелочка), которую мы добавим через CSS.
+* Ответ обернут в `<div id="faq-answer-X" class="faq-answer" role="region" hidden>`.
+ 
    <script src="script.js"></script> 
 </body>
 </html>
