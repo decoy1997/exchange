@@ -13,88 +13,77 @@ body {
     margin: 0 auto; /* Центрирование */
 }
 
-/* Стили для шапки */
+/* --- ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ХЕДЕРА --- */
 .site-header {
-    background-color: #111; /* Темный фон для шапки, можно сделать темнее или с оттенком */
-    padding: 15px 0;
-    border-bottom: 1px solid #ff7f00; /* Неоновая оранжевая линия внизу, как акцент */
-    position: sticky; /* Делаем шапку "липкой" при прокрутке */
+    background-color: #111; /* Этот фон будет виден, если логотип не загрузится или будет иметь прозрачные части */
+    padding: 15px 0; /* Оставляем паддинги, логотип будет под ними */
+    border-bottom: 1px solid #ff7f00; 
+    position: sticky; 
     top: 0;
-    z-index: 1000; /* Чтобы шапка была поверх другого контента */
+    z-index: 1000;
+    position: relative; /* !!! ДОБАВЛЕНО: для абсолютного позиционирования дочернего логотипа !!! */
+    overflow: hidden; /* !!! ДОБАВЛЕНО: чтобы части логотипа, выходящие за пределы (если object-fit: cover), не создавали проблем !!! */
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* Элементы распределяются по краям */
-    align-items: center; /* Вертикальное выравнивание по центру */
+    justify-content: space-between; 
+    align-items: center; 
+    position: relative; /* !!! ДОБАВЛЕНО: чтобы установить z-index для этого контейнера !!! */
+    z-index: 2; /* !!! ДОБАВЛЕНО: чтобы навигация и переключатель были НАД логотипом !!! */
+}
+
+/* --- СТИЛИ ДЛЯ БЛОКА ЛОГОТИПА --- */
+.logo { /* Теперь этот блок будет контейнером для фонового логотипа */
+    position: absolute; /* !!! ДОБАВЛЕНО: вырываем из потока, чтобы растянуть на весь хедер !!! */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* !!! ДОБАВЛЕНО: логотип будет под .header-container (с z-index: 2) !!! */
+    display: flex; /* Для выравнивания изображения внутри, если нужно */
+    justify-content: center;
+    align-items: center;
+}
+
+.logo a { /* Ссылка должна также занимать все пространство */
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .logo img {
-    max-height: 50px; /* Ограничиваем высоту логотипа, подберите значение */
-    display: block; /* Убирает лишний отступ под изображением */
-}
-
-.main-navigation ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Располагаем пункты меню в ряд */
-}
-
-.main-navigation ul li {
-    margin-left: 25px; /* Отступ между пунктами меню */
-}
-
-.main-navigation ul li a {
-    text-decoration: none;
-    color: #00f2ff; /* Пример неонового голубого цвета для ссылок */
-    font-weight: bold;
-    text-transform: uppercase; /* Все буквы заглавные, как вариант */
-    letter-spacing: 1px; /* Небольшое разрежение букв */
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.main-navigation ul li a:hover,
-.main-navigation ul li a:focus {
-    color: #ff7f00; /* Оранжевый при наведении, как в логотипе */
-    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Эффект неонового свечения */
-}
-
-/* Стили для переключателя языков */
-.language-switcher a {
-    color: #00f2ff;
-    text-decoration: none;
-    margin: 0 5px;
-    font-weight: bold;
-}
-
-.language-switcher a.active {
-    color: #ff7f00; /* Активный язык выделяем оранжевым */
-    cursor: default;
-}
-
-.language-switcher .lang-separator {
-    color: #555; /* Цвет разделителя */
-}
-
-/* Скрытие кнопки мобильного меню на десктопах (позже добавим стили для мобильной версии) */
-.mobile-menu-toggle {
-    display: none; 
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.mobile-menu-toggle span { /* Стили для полосок "бургера" */
+    /* max-height: 50px;  УБИРАЕМ ОГРАНИЧЕНИЕ ПО ВЫСОТЕ */
+    width: 100%;   /* Растягиваем изображение на всю ширину контейнера .logo */
+    height: 100%;  /* Растягиваем изображение на всю высоту контейнера .logo */
+    object-fit: cover; /* !!! ДОБАВЛЕНО: Масштабирует изображение с сохранением пропорций так, чтобы оно заполнило всю область. Часть изображения может обрезаться. !!! */
+    /* Другие варианты для object-fit:
+       object-fit: contain; /* Масштабирует с сохранением пропорций так, чтобы изображение целиком поместилось. Могут остаться пустые поля. */
+       /* object-fit: fill;    /* Растягивает изображение, чтобы заполнить контейнер, игнорируя пропорции (может исказить). */
+       /* object-fit: none;    /* Не масштабирует. */
+       /* object-fit: scale-down; /* Выбирает меньший из none или contain. */
     display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #00f2ff; /* Цвет полосок */
-    margin: 5px 0;
-    transition: all 0.3s ease-in-out;
 }
 
+/* Убедимся, что остальные элементы в .header-container не потеряли своего позиционирования */
+.main-navigation {
+    /* Стили остаются прежними, но теперь она будет поверх логотипа */
+    /* Возможно, понадобится добавить фон или тень для лучшей читаемости на фоне логотипа */
+    /* background-color: rgba(0, 0, 0, 0.3); /* Пример полупрозрачного фона для навигации */
+}
+
+.language-switcher {
+    /* Аналогично, стили остаются, но элемент будет поверх логотипа */
+    /* background-color: rgba(0, 0, 0, 0.3); /* Пример полупрозрачного фона */
+}
+
+.mobile-menu-toggle {
+    /* Аналогично */
+    position: relative; /* Убедимся, что z-index сработает, если понадобится */
+    z-index: 3; /* На всякий случай, выше чем .header-container, если он не содержит эту кнопку */
+}
+
+/* Если кнопка .mobile-menu-toggle находится ВНУТРИ .header-container, то z-index:3 для нее не обязателен, т.к. .header-container уже имеет z-index:2 */
 
 /* Медиа-запрос для мобильных устройств (пример) */
 @media (max-width: 768px) {
