@@ -180,17 +180,7 @@
                 </div>
         </section>
 
-        ```
 
-**Пояснения к HTML:**
-
-* Каждый вопрос-ответ обернут в `<div class="faq-item">`.
-* Вопрос сделан кнопкой (`<button class="faq-question">`) для лучшей доступности и семантики кликабельного элемента.
-    * `aria-expanded="false"`: Указывает, что ответ по умолчанию скрыт.
-    * `aria-controls="faq-answer-X"`: Связывает кнопку с соответствующим блоком ответа.
-    * `<span class="faq-icon" aria-hidden="true"></span>`: Пустой `span` для иконки (например, `+`/`-` или стрелочка), которую мы добавим через CSS.
-* Ответ обернут в `<div id="faq-answer-X" class="faq-answer" role="region" hidden>`.
- 
    <script src="script.js"></script> 
 </body>
 </html>
