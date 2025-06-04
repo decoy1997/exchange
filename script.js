@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // --- Код для мобильного меню ---
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-navigation');
 
@@ -10,25 +11,22 @@ document.addEventListener('DOMContentLoaded', function() {
             const isExpanded = mainNav.classList.contains('active');
             menuToggle.setAttribute('aria-expanded', isExpanded);
         });
-    }
 
-    // Дополнительно: Закрытие меню при клике на ссылку в мобильном меню (для одностраничников)
-    const navLinks = mainNav.querySelectorAll('a');
-    if (navLinks.length > 0) {
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (mainNav.classList.contains('active')) { // Если мобильное меню открыто
-                    mainNav.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
+        // Дополнительно: Закрытие меню при клике на ссылку в мобильном меню (для одностраничников)
+        const navLinks = mainNav.querySelectorAll('a'); // Убедитесь, что mainNav здесь доступен
+        if (navLinks.length > 0) {
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) { // Если мобильное меню открыто
+                        mainNav.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
             });
-        });
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-    // Код для мобильного меню (если он здесь)
-    // ...
+        }
+    } // Конец if (menuToggle && mainNav)
 
-    // --- FAQ Accordion ---
+    // --- Код для FAQ Accordion ---
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach(item => {
@@ -46,11 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (otherItem !== item) {
                             const otherQuestionButton = otherItem.querySelector('.faq-question');
                             const otherAnswerDiv = otherItem.querySelector('.faq-answer');
-                            otherQuestionButton.classList.remove('active');
-                            otherQuestionButton.setAttribute('aria-expanded', 'false');
-                            otherAnswerDiv.classList.remove('active');
-                            otherAnswerDiv.style.maxHeight = null; // Сбрасываем max-height
-                               otherAnswerDiv.hidden = true; // Скрываем через атрибут
+                            if (otherQuestionButton && otherAnswerDiv) { // Добавил проверку
+                                otherQuestionButton.classList.remove('active');
+                                otherQuestionButton.setAttribute('aria-expanded', 'false');
+                                otherAnswerDiv.classList.remove('active');
+                                otherAnswerDiv.style.maxHeight = null;
+                                otherAnswerDiv.hidden = true;
+                            }
                         }
                     });
                 }
@@ -62,20 +62,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 answerDiv.classList.toggle('active');
                 if (answerDiv.classList.contains('active')) {
-                    answerDiv.hidden = false; // Убираем 'hidden', чтобы CSS transition сработал
+                    answerDiv.hidden = false; 
                     answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
                 } else {
-                    answerDiv.style.maxHeight = null; // Сбрасываем max-height для закрытия
-                    // Можно добавить задержку перед установкой hidden, чтобы анимация успела пройти
+                    answerDiv.style.maxHeight = null; 
                     setTimeout(() => {
-                        if (!answerDiv.classList.contains('active')) { // Перепроверяем, если вдруг быстро кликнули снова
+                        if (!answerDiv.classList.contains('active')) { 
                              answerDiv.hidden = true;
                         }
-                    }, 500); // 500ms - это длительность transition для max-height в CSS
+                    }, 500); 
                 }
             });
         }
-    });
-});
-    });
-    
+    }); // Конец faqItems.forEach
+
+}); // <-- Конец ЕДИНСТВЕННОГО обработчика DOMContentLoaded
