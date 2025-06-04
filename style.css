@@ -1,97 +1,135 @@
 /* Общие сбросы и базовые стили (можно расширить) */
 body {
     margin: 0;
-    font-family: 'Exo 2', sans-serif; /* Временно, потом подберем киберпанк шрифт */
-    background-color: #36574E; /* Пример темного фона для всей страницы */
-    color: #e0e0e0; /* Основной светлый цвет текста */
+    font-family: 'Exo 2', sans-serif; 
+    background-color: #36574E; /* Вы изменили фон на этот, это нормально */
+    color: #e0e0e0; 
     line-height: 1.6;
 }
 
 .container {
     width: 90%;
-    max-width: 1200px; /* Максимальная ширина контейнера */
-    margin: 0 auto; /* Центрирование */
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
-/* --- ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ХЕДЕРА --- */
+/* --- СТИЛИ ДЛЯ ХЕДЕРА (полная восстановленная версия) --- */
 .site-header {
-    background-color: #111; /* Темный фон для шапки */
+    background-color: #111; 
     padding: 15px 0;
-    border-bottom: 1px solid #ff7f00; /* Неоновая оранжевая линия внизу */
-    position: sticky; /* Делаем шапку "липкой" при прокрутке */
+    border-bottom: 1px solid #ff7f00; 
+    position: sticky; 
     top: 0;
-    z-index: 1000; /* Чтобы шапка была поверх другого контента */
-    /* position: relative; УДАЛИТЕ или закомментируйте ЭТУ СТРОКУ, если добавили ее */
-    /* overflow: hidden; УДАЛИТЕ или закомментируйте ЭТУ СТРОКУ, если добавили ее */
+    z-index: 1000; 
 }
 
 .header-container {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
-    /* position: relative; УДАЛИТЕ или закомментируйте ЭТУ СТРОКУ, если добавили ее */
-    /* z-index: 2; УДАЛИТЕ или закомментируйте ЭТУ СТРОКУ, если добавили ее */
 }
 
 .logo { 
-    /* Свойства position, top, left, width, height, z-index, display:flex, justify-content, align-items ВЕРНИТЕ К ИСХОДНЫМ или УДАЛИТЕ, если они были только для растягивания */
-    /* Например, можно оставить пустым или вернуть специфичные стили, если они были */
+    /* Если у блока .logo не было других стилей до этого, его можно оставить пустым */
 }
 
 .logo a { 
-    display: block; /* Это можно оставить */
-    /* width: 100%; УДАЛИТЕ или закомментируйте */
-    /* height: 100%; УДАЛИТЕ или закомментируйте */
+    display: block; 
 }
 
 .logo img {
-    max-height: 50px;  /* !!! ВОССТАНОВИТЕ ЭТО ОГРАНИЧЕНИЕ ПО ВЫСОТЕ !!! */
-    /* width: 100%; УДАЛИТЕ или закомментируйте */
-    /* height: 100%; УДАЛИТЕ или закомментируйте */
-    /* object-fit: cover; УДАЛИТЕ или закомментируйте свойство object-fit */
+    max-height: 50px; 
     display: block;
 }
 
-/* Убедитесь, что для .main-navigation, .language-switcher, .mobile-menu-toggle нет лишних z-index или position: relative, если они были добавлены только для версии с растянутым логотипом */
-.main-navigation {
-    /* Если добавляли background-color: rgba(0, 0, 0, 0.3); УДАЛИТЕ */
+/* Стили для навигации */
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Располагаем пункты меню в ряд */
 }
 
-.language-switcher {
-    /* Если добавляли background-color: rgba(0, 0, 0, 0.3); УДАЛИТЕ */
+.main-navigation ul li {
+    margin-left: 25px; /* Отступ между пунктами меню */
+}
+
+.main-navigation ul li a {
+    text-decoration: none;
+    color: #00f2ff; /* Неоновый голубой цвет для ссылок */
+    font-family: 'Exo 2', sans-serif; /* Убедитесь, что шрифт применяется */
+    font-weight: bold; /* Или другое начертание, например, 700 для Exo 2 */
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.main-navigation ul li a:hover,
+.main-navigation ul li a:focus {
+    color: #ff7f00; /* Оранжевый при наведении */
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Эффект неонового свечения */
+}
+
+/* Стили для переключателя языков */
+.language-switcher a {
+    color: #00f2ff;
+    text-decoration: none;
+    margin: 0 5px;
+    font-family: 'Exo 2', sans-serif; /* Убедитесь, что шрифт применяется */
+    font-weight: bold; /* Или другое начертание */
+}
+
+.language-switcher a.active {
+    color: #ff7f00; 
+    cursor: default;
+}
+
+.language-switcher .lang-separator {
+    color: #555; /* Цвет разделителя, можно сделать ярче, если плохо видно на вашем новом фоне body */
 }
 
 .mobile-menu-toggle {
-    /* Если добавляли z-index: 3; и position: relative; специально для этого, можно убрать, если они не нужны для других целей */
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
 }
-/* Если кнопка .mobile-menu-toggle находится ВНУТРИ .header-container, то z-index:3 для нее не обязателен, т.к. .header-container уже имеет z-index:2 */
 
-/* Медиа-запрос для мобильных устройств (пример) */
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #00f2ff; /* Цвет полосок бургера */
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Медиа-запрос для мобильных устройств */
 @media (max-width: 768px) {
     .main-navigation {
-        display: none; /* Скрываем обычное меню */
-        /* Позже здесь будут стили для выпадающего мобильного меню */
+        display: none; 
         position: absolute;
-        top: 100%; /* Под шапкой */
+        top: 100%; 
         left: 0;
         width: 100%;
-        background-color: #111; /* Фон для мобильного меню */
+        background-color: #111; 
     }
 
-    .main-navigation.active { /* Класс для отображения мобильного меню */
+    .main-navigation.active { 
         display: block; 
     }
 
     .main-navigation ul {
-        flex-direction: column; /* Пункты меню в столбик */
+        flex-direction: column; 
         align-items: center;
     }
 
     .main-navigation ul li {
-        margin: 15px 0; /* Отступы для мобильного меню */
+        margin: 15px 0; 
     }
 
     .mobile-menu-toggle {
-        display: block; /* Показываем кнопку "бургер" */
+        display: block; 
     }
 }
