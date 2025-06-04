@@ -1,0 +1,127 @@
+/* Общие сбросы и базовые стили (можно расширить) */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Временно, потом подберем киберпанк шрифт */
+    background-color: #1a1a2e; /* Пример темного фона для всей страницы */
+    color: #e0e0e0; /* Основной светлый цвет текста */
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирование */
+}
+
+/* Стили для шапки */
+.site-header {
+    background-color: #111; /* Темный фон для шапки, можно сделать темнее или с оттенком */
+    padding: 15px 0;
+    border-bottom: 1px solid #ff7f00; /* Неоновая оранжевая линия внизу, как акцент */
+    position: sticky; /* Делаем шапку "липкой" при прокрутке */
+    top: 0;
+    z-index: 1000; /* Чтобы шапка была поверх другого контента */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Элементы распределяются по краям */
+    align-items: center; /* Вертикальное выравнивание по центру */
+}
+
+.logo img {
+    max-height: 50px; /* Ограничиваем высоту логотипа, подберите значение */
+    display: block; /* Убирает лишний отступ под изображением */
+}
+
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Располагаем пункты меню в ряд */
+}
+
+.main-navigation ul li {
+    margin-left: 25px; /* Отступ между пунктами меню */
+}
+
+.main-navigation ul li a {
+    text-decoration: none;
+    color: #00f2ff; /* Пример неонового голубого цвета для ссылок */
+    font-weight: bold;
+    text-transform: uppercase; /* Все буквы заглавные, как вариант */
+    letter-spacing: 1px; /* Небольшое разрежение букв */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.main-navigation ul li a:hover,
+.main-navigation ul li a:focus {
+    color: #ff7f00; /* Оранжевый при наведении, как в логотипе */
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Эффект неонового свечения */
+}
+
+/* Стили для переключателя языков */
+.language-switcher a {
+    color: #00f2ff;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.language-switcher a.active {
+    color: #ff7f00; /* Активный язык выделяем оранжевым */
+    cursor: default;
+}
+
+.language-switcher .lang-separator {
+    color: #555; /* Цвет разделителя */
+}
+
+/* Скрытие кнопки мобильного меню на десктопах (позже добавим стили для мобильной версии) */
+.mobile-menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mobile-menu-toggle span { /* Стили для полосок "бургера" */
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #00f2ff; /* Цвет полосок */
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Медиа-запрос для мобильных устройств (пример) */
+@media (max-width: 768px) {
+    .main-navigation {
+        display: none; /* Скрываем обычное меню */
+        /* Позже здесь будут стили для выпадающего мобильного меню */
+        position: absolute;
+        top: 100%; /* Под шапкой */
+        left: 0;
+        width: 100%;
+        background-color: #111; /* Фон для мобильного меню */
+    }
+
+    .main-navigation.active { /* Класс для отображения мобильного меню */
+        display: block; 
+    }
+
+    .main-navigation ul {
+        flex-direction: column; /* Пункты меню в столбик */
+        align-items: center;
+    }
+
+    .main-navigation ul li {
+        margin: 15px 0; /* Отступы для мобильного меню */
+    }
+
+    .mobile-menu-toggle {
+        display: block; /* Показываем кнопку "бургер" */
+    }
+}
