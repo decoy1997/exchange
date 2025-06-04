@@ -358,3 +358,86 @@ body {
         text-align: justify; /* На мобильных можно попробовать justify для абзацев */
     }
 }
+/* --- СТИЛИ ДЛЯ СЕКЦИИ "УСЛУГИ" --- */
+.services-section {
+    padding: 60px 0; /* Вертикальные отступы для секции */
+    /* Фон наследуется от body (#2E1000) */
+}
+
+.section-title.services-title { /* Стили для заголовка "Направление консультаций" */
+    text-align: center;
+    font-size: 2.5em;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 50px; /* Больший отступ перед карточками */
+    text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff; /* Голубое неоновое свечение для заголовка */
+}
+
+.services-grid {
+    display: grid;
+    /* Адаптивные колонки: минимум 300px шириной, максимум 1fr (равные доли) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Пространство между карточками */
+}
+
+.service-card {
+    background-color: #1A1423; /* Темный пурпурный фон для карточек, чтобы выделялись */
+    padding: 30px 25px;
+    border-radius: 8px; /* Слегка скругленные углы */
+    border: 1px solid #00f2ff; /* Тонкая голубая неоновая рамка */
+    text-align: center; /* Центрируем текст внутри карточки */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Для выравнивания контента по вертикали, если высота разная */
+    flex-direction: column; /* Элементы внутри карточки будут идти сверху вниз */
+    /* min-height: 280px; /* Можно задать минимальную высоту, если нужно выровнять карточки с разным количеством текста */
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Легкий подъем карточки при наведении */
+    box-shadow: 0 0 15px #00f2ff, 0 0 25px #00f2ff; /* Голубое неоновое свечение при наведении */
+}
+
+/* Стили для иконок (когда добавим) */
+.service-icon {
+    width: 50px; /* Пример размера */
+    height: 50px;
+    margin: 0 auto 20px auto; /* Центрирование и отступ снизу */
+    /* fill: #ff7f00; /* Оранжевый цвет для SVG иконок, если они монохромные */
+}
+
+.service-card-title { /* Заголовок услуги внутри карточки (h3) */
+    font-size: 1.6em;
+    color: #ff7f00; /* Оранжевый неоновый цвет для заголовков услуг */
+    margin-bottom: 15px;
+    /* text-shadow: 0 0 3px #ff7f00; /* Легкое оранжевое свечение */
+}
+
+.service-card p {
+    font-size: 1em;
+    color: #c0c0c0; /* Цвет текста описания услуги */
+    line-height: 1.6;
+    flex-grow: 1; /* Позволяет абзацу занять доступное пространство, если карточки выравниваются по высоте */
+    margin-bottom: 0; /* Убираем стандартный отступ у параграфа, если он последний */
+}
+
+/* Адаптивность для секции "Услуги" */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+        gap: 20px;
+    }
+
+    .section-title.services-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .service-card-title {
+        font-size: 1.4em;
+    }
+
+    .service-card p {
+        font-size: 0.95em;
+    }
+}
