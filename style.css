@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Exo 2', sans-serif; 
-    background-color: #36574E; /* Вы изменили фон на этот, это нормально */
+    background-color: radial-gradient(ellipse at center, #6B2D00 0%, #2E1000 100%);; /* Вы изменили фон на этот, это нормально */
     color: #e0e0e0; 
     line-height: 1.6;
 }
