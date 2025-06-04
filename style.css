@@ -537,3 +537,145 @@ body {
         font-size: 0.95em;
     }
 }
+/* --- СТИЛИ ДЛЯ СЕКЦИИ FAQ --- */
+.faq-section {
+    padding: 60px 0;
+    /* Фон наследуется от body (#2E1000) */
+}
+
+.section-title.faq-title { /* Стили для заголовка "FAQ" */
+    text-align: center;
+    font-size: 2.5em;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Оранжевое неоновое свечение */
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 127, 0, 0.3); /* Полупрозрачная оранжевая линия-разделитель */
+    margin-bottom: 15px;
+}
+
+.faq-item:last-child {
+    border-bottom: none; /* Убираем линию у последнего элемента */
+    margin-bottom: 0;
+}
+
+.faq-question {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: none;
+    padding: 20px 0; /* Увеличим вертикальный отступ для вопроса */
+    width: 100%;
+    text-align: left;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.3em; /* Размер шрифта для вопроса */
+    font-weight: 700; /* Жирное начертание */
+    cursor: pointer;
+    position: relative; /* Для позиционирования иконки */
+    outline: none; /* Убираем стандартный outline при фокусе */
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover,
+.faq-question:focus {
+    color: #ff7f00; /* Оранжевый цвет при наведении/фокусе */
+}
+
+/* Иконка для вопроса (+/-) */
+.faq-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; /* Ширина иконки */
+    height: 20px; /* Высота иконки */
+    transition: transform 0.3s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #ff7f00; /* Оранжевый цвет для плюса/минуса */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.faq-icon::before { /* Горизонтальная палочка */
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Толщина линии */
+    margin-top: -1.5px; /* Центрирование */
+}
+
+.faq-icon::after { /* Вертикальная палочка (для +) */
+    top: 0;
+    left: 50%;
+    width: 3px; /* Толщина линии */
+    height: 100%;
+    margin-left: -1.5px; /* Центрирование */
+}
+
+/* Стили для открытого вопроса (когда кнопка имеет класс .active) */
+.faq-question.active .faq-icon::after {
+    transform: rotate(90deg); /* Поворачиваем вертикальную палочку, чтобы она "исчезла" */
+    opacity: 0; /* Или можно сделать transform: scaleY(0); */
+}
+.faq-question.active .faq-icon { /* Можно немного повернуть сам "+" в "x", если хотите другой эффект */
+    /* transform: translateY(-50%) rotate(45deg); */
+}
+
+
+.faq-answer {
+    /* Изначально скрыт через атрибут 'hidden' в HTML.
+       JavaScript будет управлять этим атрибутом или добавлять класс.
+       Для плавной анимации будем использовать max-height. */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out, opacity 0.3s ease-out; /* Плавный переход */
+    padding: 0 15px; /* Боковые отступы для текста ответа */
+    color: #c0c0c0;
+    opacity: 0;
+}
+
+.faq-answer.active { /* Класс, который будет добавляться JavaScript'ом */
+    /* max-height устанавливается JavaScript'ом для точного значения,
+       но можно задать большое значение, если не хотим JS для этого.
+       Например: max-height: 500px; (должно хватить для большинства ответов) */
+    padding-top: 10px;
+    padding-bottom: 20px;
+    opacity: 1;
+}
+
+.faq-answer p {
+    margin: 0 0 10px 0;
+    line-height: 1.7;
+    font-size: 1.1em;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+/* Адаптивность для секции FAQ */
+@media (max-width: 768px) {
+    .section-title.faq-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .faq-question {
+        font-size: 1.1em;
+        padding: 15px 0;
+    }
+     .faq-icon {
+        right: 5px; /* Подвинем иконку чуть ближе на мобильных */
+    }
+
+    .faq-answer p {
+        font-size: 1em;
+    }
+}
