@@ -397,6 +397,102 @@ body {
     transform: translateY(-10px); /* Легкий подъем карточки при наведении */
     box-shadow: 0 0 15px #00f2ff, 0 0 25px #00f2ff; /* Голубое неоновое свечение при наведении */
 }
+/* --- СТИЛИ ДЛЯ СЕКЦИИ "ОТЗЫВЫ" --- */
+.testimonials-section {
+    padding: 60px 0;
+    /* По умолчанию фон наследуется от body (#2E1000). 
+       Если хотите другой, раскомментируйте и измените: */
+    /* background: linear-gradient(to bottom, #10141C, #0D1B2A); */ /* Пример другого фона */
+}
+
+.testimonials-section .section-title { /* Используем общий класс .section-title, если нет специфичного */
+    text-align: center;
+    font-size: 2.5em;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Оранжевое неоновое свечение */
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-item {
+    background-color: #1A1423; /* Тот же фон, что и у карточек услуг для единообразия, или другой */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ff7f00; /* Оранжевая неоновая рамка */
+    box-shadow: 0 0 10px rgba(255, 127, 0, 0.3); /* Легкая оранжевая тень */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Чтобы автор был внизу, если высота разная */
+}
+
+.testimonial-item p { /* Текст отзыва */
+    font-size: 1.1em;
+    color: #c0c0c0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic; /* Делаем текст отзыва курсивом */
+    position: relative; /* Для кавычек */
+    padding-left: 30px; /* Место для открывающей кавычки */
+}
+
+.testimonial-item p::before { /* Декоративные кавычки */
+    content: '“'; /* Открывающая кавычка */
+    font-family: 'Georgia', serif; /* Шрифт с хорошими кавычками */
+    font-size: 3em; /* Размер кавычки */
+    color: #ff7f00; /* Оранжевый цвет кавычки */
+    position: absolute;
+    left: 0px;
+    top: -5px;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.testimonial-item cite { /* Автор отзыва */
+    font-size: 1em;
+    color: #00f2ff; /* Голубой неоновый цвет для автора */
+    font-style: normal; /* Убираем курсив у cite */
+    text-align: right;
+    display: block; /* Чтобы занимал всю ширину и можно было выровнять текст */
+    font-weight: bold;
+}
+
+.testimonial-summary { /* Блок с информацией о "640+ отзывов" */
+    grid-column: 1 / -1; /* Растягиваем на всю ширину грида, если он в гриде */
+    background-color: rgba(26, 20, 35, 0.7); /* Полупрозрачный фон, если он внутри .testimonials-grid */
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #e0e0e0;
+    border: 1px dashed #ff7f00; /* Пунктирная оранжевая рамка */
+}
+
+/* Адаптивность для секции "Отзывы" */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+    }
+
+    .testimonials-section .section-title {
+        font-size: 2em;
+    }
+
+    .testimonial-item p {
+        font-size: 1em;
+        padding-left: 25px; /* Чуть меньше отступ для кавычки */
+    }
+     .testimonial-item p::before {
+        font-size: 2.5em;
+     }
+}
 
 /* Стили для иконок (когда добавим) */
 .service-icon {
