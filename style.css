@@ -194,3 +194,67 @@ body {
    чтобы компенсировать высоту "липкого" хедера при переходе по якорю.
    Но это можно сделать позже, если понадобится. */
 }
+/* --- ГЛИТЧ-ЭФФЕКТ ДЛЯ HERO HEADLINE --- */
+.hero-headline {
+    position: relative; /* Необходимо для позиционирования псевдоэлементов */
+    /* color: #e0e0e0; /* Основной цвет текста - уже должен быть задан */
+    /* text-shadow: ... /* Если есть неоновое свечение, оно может оставаться */
+}
+
+.hero-headline::before,
+.hero-headline::after {
+    content: attr(data-text); /* Копируем текст из атрибута data-text */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Скрываем части, которые выходят за пределы */
+    background: transparent; /* Фон псевдоэлементов должен быть прозрачным */
+}
+
+/* Первый слой глитча (например, сдвиг влево, красноватый оттенок) */
+.hero-headline::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1; /* Неоновый розовый/маджента для глитча */
+    /* Анимация для этого слоя */
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+/* Второй слой глитча (например, сдвиг вправо, голубоватый оттенок) */
+.hero-headline::after {
+    left: -2px;
+    text-shadow: -2px 0 #00f2ff, 2px 2px #ff00c1; /* Голубой и немного розового для глитча */
+    /* Анимация для этого слоя */
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* Анимация для первого слоя глитча */
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(10% 0 80% 0); transform: translate(-0.5px, -0.5px); }
+    10% { clip-path: inset(5% 0 90% 0); transform: translate(0.5px, 0.5px); }
+    20% { clip-path: inset(25% 0 60% 0); transform: translate(-0.5px, 0.5px); }
+    30% { clip-path: inset(90% 0 2% 0); transform: translate(0.5px, -0.5px); }
+    40% { clip-path: inset(40% 0 45% 0); transform: translate(-0.5px, -0.5px); }
+    50% { clip-path: inset(80% 0 5% 0); transform: translate(0.5px, 0.5px); }
+    60% { clip-path: inset(15% 0 70% 0); transform: translate(-0.5px, 0.5px); }
+    70% { clip-path: inset(75% 0 10% 0); transform: translate(0.5px, -0.5px); }
+    80% { clip-path: inset(50% 0 30% 0); transform: translate(-0.5px, -0.5px); }
+    90% { clip-path: inset(30% 0 65% 0); transform: translate(0.5px, 0.5px); }
+    100% { clip-path: inset(5% 0 85% 0); transform: translate(-0.5px, 0.5px); }
+}
+
+/* Анимация для второго слоя глитча */
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(85% 0 5% 0); transform: translate(0.5px, 0.5px); }
+    10% { clip-path: inset(20% 0 70% 0); transform: translate(-0.5px, -0.5px); }
+    20% { clip-path: inset(60% 0 30% 0); transform: translate(0.5px, -0.5px); }
+    30% { clip-path: inset(5% 0 80% 0); transform: translate(-0.5px, 0.5px); }
+    40% { clip-path: inset(45% 0 40% 0); transform: translate(0.5px, -0.5px); }
+    50% { clip-path: inset(10% 0 80% 0); transform: translate(-0.5px, -0.5px); }
+    60% { clip-path: inset(70% 0 15% 0); transform: translate(0.5px, 0.5px); }
+    70% { clip-path: inset(35% 0 50% 0); transform: translate(-0.5px, -0.5px); }
+    80% { clip-path: inset(90% 0 2% 0); transform: translate(0.5px, 0.5px); }
+    90% { clip-path: inset(65% 0 20% 0); transform: translate(-0.5px, -0.5px); }
+    100% { clip-path: inset(25% 0 60% 0); transform: translate(0.5px, 0.5px); }
+}
