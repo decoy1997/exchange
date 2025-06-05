@@ -8,7 +8,10 @@ body {
     color: #e0e0e0;
     line-height: 1.6;
 }
-
+main {
+    display: block; /* Гарантирует, что элемент является блоком */
+    width: 100%;    /* Принудительно заставляет его занять 100% ширины */
+}
 section {
     width: 100%;
     box-sizing: border-box; /* Гарантирует, что padding и border не увеличат фактическую ширину */
@@ -668,15 +671,3 @@ section {
 
 }
 
-/* --- ФИНАЛЬНЫЙ КОД ДЛЯ ОТЛАДКИ --- */
-body {
-    background-color: red !important; /* Вся страница станет красной */
-}
-
-main {
-    background-color: blue !important; /* Вся основная часть станет синей */
-}
-
-.container {
-    background-color: yellow !important; /* Все контейнеры станут желтыми */
-}
