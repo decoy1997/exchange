@@ -788,3 +788,18 @@ body {
     text-align: center;
     margin-top: 30px;
 }
+
+/* --- ВРЕМЕННЫЙ КОД ДЛЯ ОТЛАДКИ --- */
+/* (потом его можно будет удалить) */
+
+body {
+    background-color: darkgreen !important; /* Фон всей страницы станет зеленым */
+}
+
+.contact-section {
+    background-color: darkblue !important; /* Фон секции "Контакты" станет синим */
+}
+
+.container {
+    background-color: yellow !important; /* Фон контейнера внутри секции станет желтым */
+}
