@@ -581,21 +581,6 @@ body {
     margin-bottom: 0;
 }
 
-.faq-question {
-    background-color: transparent;
-    color: #e0e0e0;
-    border: none;
-    padding: 20px 0; /* Увеличим вертикальный отступ для вопроса */
-    width: 100%;
-    text-align: left;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 1.3em; /* Размер шрифта для вопроса */
-    font-weight: 700; /* Жирное начертание */
-    cursor: pointer;
-    position: relative; /* Для позиционирования иконки */
-    outline: none; /* Убираем стандартный outline при фокусе */
-    transition: color 0.3s ease;
-}
 
 .faq-question:hover,
 .faq-question:focus {
