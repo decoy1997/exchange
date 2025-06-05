@@ -750,26 +750,34 @@ body {
     text-align: left;
 }
 
+/* --- СТИЛИ ДЛЯ ФОРМЫ (с более заметными границами) --- */
+
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
     padding: 12px;
     background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный темный фон */
-    border: 1px solid #00f2ff; /* Голубая неоновая рамка */
+    
+    /* --- ИЗМЕНЕНИЯ ЗДЕСЬ --- */
+    border: 2px solid #ff7f00; /* Делаем рамку толще (2px) и оранжевой */
+    /* Было: border: 1px solid #00f2ff; */
+    
     border-radius: 5px;
-    color: #e0e0e0; /* Цвет вводимого текста */
+    color: #e0e0e0; 
     font-family: 'Exo 2', sans-serif;
     font-size: 1em;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Также немного усилим эффект при фокусе, чтобы он соответствовал новой толщине рамки */
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group textarea:focus {
-    border-color: #ff7f00; /* Оранжевая рамка при фокусе */
-    box-shadow: 0 0 10px #ff7f00; /* Оранжевое свечение при фокусе */
+    border-color: #fff; /* При фокусе делаем рамку белой для контраста */
+    box-shadow: 0 0 15px #ff7f00; /* Увеличим свечение при фокусе */
+    /* Было: border-color: #ff7f00; и box-shadow: 0 0 10px #ff7f00; */
 }
 
 .form-group textarea {
