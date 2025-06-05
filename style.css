@@ -1,16 +1,19 @@
-/* Общие сбросы и базовые стили (можно расширить) */
+/* ==========================================================================
+   1. ОБЩИЕ СТИЛИ
+   ========================================================================== */
 body {
     margin: 0;
-    font-family: 'Exo 2', sans-serif; 
-    background-color: #2E1000; /* Вы изменили фон на этот, это нормально */
-    color: #e0e0e0; 
+    font-family: 'Exo 2', sans-serif;
+    background-color: #2E1000;
+    color: #e0e0e0;
     line-height: 1.6;
 }
+
 section {
     width: 100%;
-    box-sizing: border-box; /* Это гарантирует, что внутренние отступы (padding) не "сломают" ширину */
+    box-sizing: border-box; /* Гарантирует, что padding и border не увеличат фактическую ширину */
+    padding: 60px 0;
 }
-/* -------------------------- */
 
 .container {
     width: 90%;
@@ -18,83 +21,107 @@ section {
     margin: 0 auto;
 }
 
-/* --- СТИЛИ ДЛЯ ХЕДЕРА (полная восстановленная версия) --- */
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background-color: #ff7f00;
+    color: #111;
+    border: 2px solid #ff7f00;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: transparent;
+    color: #ff7f00;
+}
+
+/* ==========================================================================
+   2. СТИЛИ ХЕДЕРА (ШАПКИ)
+   ========================================================================== */
 .site-header {
-    background: #111; 
-    padding: 15px 0;
-    border-bottom: 1px solid #ff7f00; 
-    position: sticky; 
+    padding: 15px 0; /* У секций уже есть паддинг, поэтому для хедера можно сделать его меньше */
+    background: #111;
+    border-bottom: 1px solid #ff7f00;
+    position: sticky;
     top: 0;
-    z-index: 1000; 
+    z-index: 1000;
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.logo { 
-    /* Если у блока .logo не было других стилей до этого, его можно оставить пустым */
-}
-
-.logo a { 
-    display: block; 
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo img {
-    max-height: 50px; 
+    max-height: 50px;
     display: block;
 }
 
-/* Стили для навигации */
 .main-navigation ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Располагаем пункты меню в ряд */
+    display: flex;
 }
 
 .main-navigation ul li {
-    margin-left: 25px; /* Отступ между пунктами меню */
+    margin-left: 25px;
 }
 
 .main-navigation ul li a {
     text-decoration: none;
-    color: #00f2ff; /* Неоновый голубой цвет для ссылок */
-    font-family: 'Exo 2', sans-serif; /* Убедитесь, что шрифт применяется */
-    font-weight: bold; /* Или другое начертание, например, 700 для Exo 2 */
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
+    color: #00f2ff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .main-navigation ul li a:hover,
 .main-navigation ul li a:focus {
-    color: #ff7f00; /* Оранжевый при наведении */
-    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Эффект неонового свечения */
+    color: #ff7f00;
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00;
 }
 
-/* Стили для переключателя языков */
 .language-switcher a {
     color: #00f2ff;
     text-decoration: none;
     margin: 0 5px;
-    font-family: 'Exo 2', sans-serif; /* Убедитесь, что шрифт применяется */
-    font-weight: bold; /* Или другое начертание */
+    font-weight: bold;
 }
 
 .language-switcher a.active {
-    color: #ff7f00; 
+    color: #ff7f00;
     cursor: default;
 }
 
 .language-switcher .lang-separator {
-    color: #555; /* Цвет разделителя, можно сделать ярче, если плохо видно на вашем новом фоне body */
+    color: #555;
 }
 
 .mobile-menu-toggle {
-    display: none; 
+    display: none;
     background: none;
     border: none;
     cursor: pointer;
@@ -105,319 +132,190 @@ section {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: #00f2ff; /* Цвет полосок бургера */
+    background-color: #00f2ff;
     margin: 5px 0;
     transition: all 0.3s ease-in-out;
 }
 
-/* Медиа-запрос для мобильных устройств */
-@media (max-width: 768px) {
-    .main-navigation {
-        display: none; 
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        width: 100%;
-        background-color: #111; 
-    }
-
-    .main-navigation.active { 
-        display: block; 
-    }
-
-    .main-navigation ul {
-        flex-direction: column; 
-        align-items: center;
-    }
-
-    .main-navigation ul li {
-        margin: 15px 0; 
-    }
-
-    .mobile-menu-toggle {
-        display: block; 
-    }
-    .hero-section {
-    background: radial-gradient(ellipse at center, #6B2D00 0%, #2E1000 100%); /* Ваш выбранный фиолетово-баклажановый цвет */
-    padding: 80px 0; /* Вертикальные отступы, можно настроить по вкусу */
-    text-align: center; /* Центрируем текст внутри секции */
-    min-height: 70vh; /* Минимальная высота секции, чтобы она занимала значительную часть экрана. Можно настроить. */
+/* ==========================================================================
+   3. СТИЛИ СЕКЦИИ HERO
+   ========================================================================== */
+.hero-section {
+    background: radial-gradient(ellipse at center, #6B2D00 0%, #2E1000 100%);
+    padding: 80px 0;
+    text-align: center;
+    min-height: 70vh;
     display: flex;
-    align-items: center; /* Вертикальное выравнивание контента по центру секции */
-    justify-content: center; /* Горизонтальное выравнивание контента по центру */
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
-    max-width: 800px; /* Ограничиваем максимальную ширину контента в Hero, чтобы текст не был слишком растянут */
+    max-width: 800px;
 }
 
 .hero-headline {
-    font-size: 2.8em; /* Размер шрифта для главного заголовка, подберите по вкусу */
-    /* font-weight: 700; /* Для Exo 2, если хотите жирнее стандартного */
-    color: #e0e0e0; /* Основной цвет текста, можно сделать ярче, например, белый #fff */
+    font-size: 2.8em;
+    color: #e0e0e0;
+    margin-top: 0;
     margin-bottom: 20px;
     line-height: 1.3;
-    /* Позже сюда можно добавить текстовый неоновый или глитч-эффект */
-    /* text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff; /* Пример неонового свечения для текста */
+    position: relative;
 }
 
 .hero-subheadline {
-    font-size: 1.4em; /* Размер шрифта для подзаголовка */
-    color: #c0c0c0; /* Чуть менее яркий цвет для подзаголовка */
+    font-size: 1.4em;
+    color: #c0c0c0;
     margin-bottom: 30px;
     line-height: 1.5;
 }
 
-/* Стили для кнопки */
-.btn { /* Общие стили для всех кнопок */
-    display: inline-block;
-    padding: 12px 30px;
-    text-decoration: none;
-    font-family: 'Exo 2', sans-serif;
-    font-weight: bold; /* или 700 */
-    border-radius: 5px; /* Скругление углов */
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.btn-primary { /* Стили для основной кнопки (ваша CTA) */
-    background-color: #ff7f00; /* Оранжевый неоновый цвет (из вашей палитры) */
-    color: #111; /* Темный цвет текста на кнопке для контраста */
-    border: 2px solid #ff7f00; /* Рамка того же цвета */
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: transparent; /* Фон становится прозрачным при наведении */
-    color: #ff7f00; /* Текст становится оранжевым */
-    /* box-shadow: 0 0 10px #ff7f00, 0 0 20px #ff7f00; /* Неоновое свечение для кнопки при наведении */
-}
-
-/* Если хотите, чтобы ссылка #home в меню вела на эту секцию,
-   можно добавить небольшой хак с псевдо-элементом для id="hero",
-   чтобы компенсировать высоту "липкого" хедера при переходе по якорю.
-   Но это можно сделать позже, если понадобится. */
-}
-/* --- ОБНОВЛЕННЫЙ ГЛИТЧ-ЭФФЕКТ ДЛЯ HERO HEADLINE (более плавный) --- */
-.hero-headline {
-    position: relative; 
-}
-
+/* Глитч-эффект */
 .hero-headline::before,
 .hero-headline::after {
-    content: attr(data-text); 
+    content: attr(data-text);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; 
-    background: transparent; 
+    overflow: hidden;
+    background: transparent;
 }
 
-/* Первый слой глитча */
 .hero-headline::before {
     left: 2px;
-    text-shadow: -2px 0 #ff00c1; 
-    animation: smoother-glitch-anim-1 4s infinite linear alternate; /* Увеличена длительность, убран reverse для одного из них для разнообразия */
+    text-shadow: -2px 0 #ff00c1;
+    animation: smoother-glitch-anim-1 4s infinite linear alternate;
 }
 
-/* Второй слой глитча */
 .hero-headline::after {
     left: -2px;
-    text-shadow: -2px 0 #00f2ff, 2px 2px #ff00c1; 
-    animation: smoother-glitch-anim-2 3.5s infinite linear alternate-reverse; /* Увеличена длительность */
+    text-shadow: -2px 0 #00f2ff, 2px 2px #ff00c1;
+    animation: smoother-glitch-anim-2 3.5s infinite linear alternate-reverse;
 }
 
-/* Анимация для первого слоя глитча (более плавные переходы clip-path) */
 @keyframes smoother-glitch-anim-1 {
-    0% {
-        clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%); /* Видна верхняя треть */
-        transform: translate(-1px, -1px);
-    }
-    25% {
-        clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%); /* Смещается ниже */
-        transform: translate(1px, -1px);
-    }
-    50% {
-        clip-path: polygon(0 40%, 100% 40%, 100% 70%, 0 70%); /* Еще ниже */
-        transform: translate(1px, 1px);
-    }
-    75% {
-        clip-path: polygon(0 60%, 100% 60%, 100% 90%, 0 90%); /* Почти нижняя треть */
-        transform: translate(-1px, 1px);
-    }
-    100% {
-        clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); /* Видна нижняя треть */
-        transform: translate(-1px, -1px);
-    }
+    0% { clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%); transform: translate(-1px, -1px); }
+    25% { clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%); transform: translate(1px, -1px); }
+    50% { clip-path: polygon(0 40%, 100% 40%, 100% 70%, 0 70%); transform: translate(1px, 1px); }
+    75% { clip-path: polygon(0 60%, 100% 60%, 100% 90%, 0 90%); transform: translate(-1px, 1px); }
+    100% { clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); transform: translate(-1px, -1px); }
 }
 
-/* Анимация для второго слоя глитча (другой характер движения) */
 @keyframes smoother-glitch-anim-2 {
-    0% {
-        clip-path: inset(50% 0 30% 0); /* Показывает срез в середине */
-        transform: translate(1px, 1px);
-    }
-    20% {
-        clip-path: inset(80% 0 5% 0); /* Срез смещается вниз */
-        transform: translate(-1px, 1px);
-    }
-    40% {
-        clip-path: inset(20% 0 65% 0); /* Срез смещается вверх */
-        transform: translate(1px, -1px);
-    }
-    60% {
-        clip-path: inset(60% 0 20% 0); /* Снова середина, другой срез */
-        transform: translate(-1px, -1px);
-    }
-    80% {
-        clip-path: inset(30% 0 50% 0); /* Срез смещается */
-        transform: translate(1px, 1px);
-    }
-    100% {
-        clip-path: inset(5% 0 75% 0); /* Срез вверху */
-        transform: translate(-1px, 1px);
-    }
-}
-/* --- СТИЛИ ДЛЯ СЕКЦИИ "ОБО МНЕ" --- */
-.about-section {
-    background: linear-gradient(to bottom, #3A1E0A, #201008); /* Ваш выбранный градиент */
-    padding: 60px 0; /* Вертикальные отступы для секции */
-    color: #e0e0e0; /* Основной цвет текста для этой секции, если не переопределен */
+    0% { clip-path: inset(50% 0 30% 0); transform: translate(1px, 1px); }
+    20% { clip-path: inset(80% 0 5% 0); transform: translate(-1px, 1px); }
+    40% { clip-path: inset(20% 0 65% 0); transform: translate(1px, -1px); }
+    60% { clip-path: inset(60% 0 20% 0); transform: translate(-1px, -1px); }
+    80% { clip-path: inset(30% 0 50% 0); transform: translate(1px, 1px); }
+    100% { clip-path: inset(5% 0 75% 0); transform: translate(-1px, 1px); }
 }
 
-.about-section .container {
-    /* Контейнер уже центрирован, можно добавить специфичные отступы если нужно */
-    /* max-width: 900px; /* Можно ограничить ширину контента в этой секции для лучшей читаемости */
+/* ==========================================================================
+   4. СТИЛИ СЕКЦИИ "ОБО МНЕ"
+   ========================================================================== */
+.about-section {
+    background: linear-gradient(to bottom, #3A1E0A, #201008);
 }
 
 .about-photo {
     display: block;
-    margin: 0 auto 30px auto; /* Центрирование фото и отступ снизу */
-    width: 180px; /* Ширина фото */
-    height: 180px; /* Высота фото (для идеального круга) */
-    border-radius: 50%; /* Делаем фото круглым */
-    border: 4px solid #ff7f00; /* Оранжевая неоновая рамка */
-    object-fit: cover; /* Гарантирует, что изображение заполнит круг, сохраняя пропорции */
-    box-shadow: 0 0 15px #ff7f00, 0 0 25px #ff7f00; /* Неоновое свечение для рамки */
+    margin: 0 auto 30px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #ff7f00;
+    object-fit: cover;
+    box-shadow: 0 0 15px #ff7f00, 0 0 25px #ff7f00;
 }
 
-.section-title.about-title { /* Стили для заголовка "Мой опыт и подход" */
-    text-align: center;
-    font-size: 2.5em; /* Размер заголовка секции */
-    color: #e0e0e0; /* Цвет заголовка */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
-    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Оранжевое неоновое свечение */
+.about-title {
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00;
 }
 
 .about-subsection {
-    margin-bottom: 30px; /* Отступ между подразделами */
-    padding: 0 15px; /* Небольшие боковые отступы для текста, если нужно */
+    margin-bottom: 30px;
+    padding: 0 15px;
 }
 
 .about-subsection:last-child {
-    margin-bottom: 0; /* Убираем отступ у последнего подраздела */
+    margin-bottom: 0;
 }
 
-.subsection-title { /* Стили для подзаголовков h3 */
+.subsection-title {
     font-size: 1.8em;
-    color: #00f2ff; /* Голубой неоновый цвет для подзаголовков */
+    color: #00f2ff;
+    margin-top: 0;
     margin-bottom: 15px;
-    text-align: center; /* Центрируем подзаголовки */
-    /* text-shadow: 0 0 5px #00f2ff; /* Легкое голубое свечение, если хотите */
+    text-align: center;
 }
 
 .about-subsection p {
     font-size: 1.1em;
     line-height: 1.7;
-    color: #c0c0c0; /* Цвет текста абзацев */
-    text-align: left; /* Текст абзацев выравниваем по левому краю для лучшей читаемости */
-    /* Для лучшей читаемости можно ограничить максимальную ширину текстовых блоков, если они внутри .container кажутся слишком широкими */
-    max-width: 700px; /* Например, ограничиваем ширину абзацев */
-    margin-left: auto;  /* Центрируем блок абзаца, если max-width задан */
-    margin-right: auto; /* Центрируем блок абзаца, если max-width задан */
+    color: #c0c0c0;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Адаптивность для секции "Обо мне" */
-@media (max-width: 768px) {
-    .about-photo {
-        width: 150px;
-        height: 150px;
-    }
-
-    .section-title.about-title {
-        font-size: 2em;
-        margin-bottom: 30px;
-    }
-
-    .subsection-title {
-        font-size: 1.5em;
-    }
-
-    .about-subsection p {
-        font-size: 1em;
-        text-align: justify; /* На мобильных можно попробовать justify для абзацев */
-    }
-}
-/* --- СТИЛИ ДЛЯ СЕКЦИИ "УСЛУГИ" --- */
-.services-section {
-    padding: 60px 0; /* Вертикальные отступы для секции */
-    /* Фон наследуется от body (#2E1000) */
-}
-
-.section-title.services-title { /* Стили для заголовка "Направление консультаций" */
-    text-align: center;
-    font-size: 2.5em;
-    color: #e0e0e0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 50px; /* Больший отступ перед карточками */
-    text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff; /* Голубое неоновое свечение для заголовка */
+/* ==========================================================================
+   5. СТИЛИ СЕКЦИИ "УСЛУГИ"
+   ========================================================================== */
+.services-title {
+    text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff;
 }
 
 .services-grid {
     display: grid;
-    /* Адаптивные колонки: минимум 300px шириной, максимум 1fr (равные доли) */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; /* Пространство между карточками */
+    gap: 30px;
 }
 
 .service-card {
-    background-color: #1A1423; /* Темный пурпурный фон для карточек, чтобы выделялись */
+    background-color: #1A1423;
     padding: 30px 25px;
-    border-radius: 8px; /* Слегка скругленные углы */
-    border: 1px solid #00f2ff; /* Тонкая голубая неоновая рамка */
-    text-align: center; /* Центрируем текст внутри карточки */
+    border-radius: 8px;
+    border: 1px solid #00f2ff;
+    text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* Для выравнивания контента по вертикали, если высота разная */
-    flex-direction: column; /* Элементы внутри карточки будут идти сверху вниз */
-    /* min-height: 280px; /* Можно задать минимальную высоту, если нужно выровнять карточки с разным количеством текста */
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card:hover {
-    transform: translateY(-10px); /* Легкий подъем карточки при наведении */
-    box-shadow: 0 0 15px #00f2ff, 0 0 25px #00f2ff; /* Голубое неоновое свечение при наведении */
-}
-/* --- СТИЛИ ДЛЯ СЕКЦИИ "ОТЗЫВЫ" --- */
-.testimonials-section {
-    padding: 60px 0;
-    /* По умолчанию фон наследуется от body (#2E1000). 
-       Если хотите другой, раскомментируйте и измените: */
-    /* background: linear-gradient(to bottom, #10141C, #0D1B2A); */ /* Пример другого фона */
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px #00f2ff, 0 0 25px #00f2ff;
 }
 
-.testimonials-section .section-title { /* Используем общий класс .section-title, если нет специфичного */
-    text-align: center;
-    font-size: 2.5em;
-    color: #e0e0e0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 50px;
-    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Оранжевое неоновое свечение */
+.service-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px auto;
+}
+
+.service-card-title {
+    font-size: 1.6em;
+    color: #ff7f00;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 1em;
+    color: #c0c0c0;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   6. СТИЛИ СЕКЦИИ "ОТЗЫВЫ" (взяты из вашего кода)
+   ========================================================================== */
+.testimonials-section .section-title {
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00;
 }
 
 .testimonials-grid {
@@ -427,31 +325,32 @@ section {
 }
 
 .testimonial-item {
-    background-color: #1A1423; /* Тот же фон, что и у карточек услуг для единообразия, или другой */
+    background-color: #1A1423;
     padding: 25px;
     border-radius: 8px;
-    border: 1px solid #ff7f00; /* Оранжевая неоновая рамка */
-    box-shadow: 0 0 10px rgba(255, 127, 0, 0.3); /* Легкая оранжевая тень */
+    border: 1px solid #ff7f00;
+    box-shadow: 0 0 10px rgba(255, 127, 0, 0.3);
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Чтобы автор был внизу, если высота разная */
+    justify-content: space-between;
 }
 
-.testimonial-item p { /* Текст отзыва */
+.testimonial-item p {
     font-size: 1.1em;
     color: #c0c0c0;
     line-height: 1.6;
+    margin-top: 0;
     margin-bottom: 20px;
-    font-style: italic; /* Делаем текст отзыва курсивом */
-    position: relative; /* Для кавычек */
-    padding-left: 30px; /* Место для открывающей кавычки */
+    font-style: italic;
+    position: relative;
+    padding-left: 30px;
 }
 
-.testimonial-item p::before { /* Декоративные кавычки */
-    content: '“'; /* Открывающая кавычка */
-    font-family: 'Georgia', serif; /* Шрифт с хорошими кавычками */
-    font-size: 3em; /* Размер кавычки */
-    color: #ff7f00; /* Оранжевый цвет кавычки */
+.testimonial-item p::before {
+    content: '“';
+    font-family: 'Georgia', serif;
+    font-size: 3em;
+    color: #ff7f00;
     position: absolute;
     left: 0px;
     top: -5px;
@@ -459,98 +358,49 @@ section {
     opacity: 0.7;
 }
 
-.testimonial-item cite { /* Автор отзыва */
+.testimonial-item cite {
     font-size: 1em;
-    color: #00f2ff; /* Голубой неоновый цвет для автора */
-    font-style: normal; /* Убираем курсив у cite */
+    color: #00f2ff;
+    font-style: normal;
     text-align: right;
-    display: block; /* Чтобы занимал всю ширину и можно было выровнять текст */
+    display: block;
     font-weight: bold;
 }
 
-.testimonial-summary { /* Блок с информацией о "640+ отзывов" */
-    grid-column: 1 / -1; /* Растягиваем на всю ширину грида, если он в гриде */
-    background-color: rgba(26, 20, 35, 0.7); /* Полупрозрачный фон, если он внутри .testimonials-grid */
+.testimonial-summary {
+    grid-column: 1 / -1;
+    background-color: rgba(26, 20, 35, 0.7);
     padding: 20px;
     margin-top: 30px;
     border-radius: 8px;
     text-align: center;
     font-size: 1.2em;
     color: #e0e0e0;
-    border: 1px dashed #ff7f00; /* Пунктирная оранжевая рамка */
+    border: 1px dashed #ff7f00;
 }
 
-/* Адаптивность для секции "Отзывы" */
-@media (max-width: 768px) {
-    .testimonials-grid {
-        grid-template-columns: 1fr; /* Одна колонка на мобильных */
-    }
-
-    .testimonials-section .section-title {
-        font-size: 2em;
-    }
-
-    .testimonial-item p {
-        font-size: 1em;
-        padding-left: 25px; /* Чуть меньше отступ для кавычки */
-    }
-     .testimonial-item p::before {
-        font-size: 2.5em;
-     }
+/* ==========================================================================
+   7. СТИЛИ СЕКЦИИ FAQ
+   ========================================================================== */
+.faq-title {
+    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00;
 }
 
-/* Стили для иконок (когда добавим) */
-.service-icon {
-    width: 50px; /* Пример размера */
-    height: 50px;
-    margin: 0 auto 20px auto; /* Центрирование и отступ снизу */
-    /* fill: #ff7f00; /* Оранжевый цвет для SVG иконок, если они монохромные */
-}
-
-.service-card-title { /* Заголовок услуги внутри карточки (h3) */
-    font-size: 1.6em;
-    color: #ff7f00; /* Оранжевый неоновый цвет для заголовков услуг */
+.faq-item {
+    border-bottom: 1px solid rgba(255, 127, 0, 0.3);
     margin-bottom: 15px;
-    /* text-shadow: 0 0 3px #ff7f00; /* Легкое оранжевое свечение */
 }
 
-.service-card p {
-    font-size: 1em;
-    color: #c0c0c0; /* Цвет текста описания услуги */
-    line-height: 1.6;
-    flex-grow: 1; /* Позволяет абзацу занять доступное пространство, если карточки выравниваются по высоте */
-    margin-bottom: 0; /* Убираем стандартный отступ у параграфа, если он последний */
+.faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
-
-/* Адаптивность для секции "Услуги" */
-@media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: 1fr; /* Одна колонка на мобильных */
-        gap: 20px;
-    }
-
-    .section-title.services-title {
-        font-size: 2em;
-        margin-bottom: 30px;
-    }
-
-    .service-card-title {
-        font-size: 1.4em;
-    }
-
-    .service-card p {
-        font-size: 0.95em;
-    }
-}
-/* --- СТИЛИ ДЛЯ СЕКЦИИ FAQ --- */
-/* --- СТИЛИ ДЛЯ FAQ (ИСПРАВЛЕНИЕ ОТСТУПОВ) --- */
 
 .faq-question {
     background-color: transparent;
     color: #e0e0e0;
     border: none;
-    /* ИЗМЕНЕНИЕ ЗДЕСЬ: Добавляем отступ справа (40px) для иконки */
-    padding: 20px 40px 20px 0; 
+    padding: 20px 40px 20px 0;
     width: 100%;
     text-align: left;
     font-family: 'Exo 2', sans-serif;
@@ -562,44 +412,18 @@ section {
     transition: color 0.3s ease;
 }
 
-/* ... остальные стили для .faq-icon, .faq-answer и т.д. остаются без изменений ... */
-
-
-
-.section-title.faq-title { /* Стили для заголовка "FAQ" */
-    text-align: center;
-    font-size: 2.5em;
-    color: #e0e0e0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 50px;
-    text-shadow: 0 0 5px #ff7f00, 0 0 10px #ff7f00; /* Оранжевое неоновое свечение */
-}
-
-.faq-item {
-    border-bottom: 1px solid rgba(255, 127, 0, 0.3); /* Полупрозрачная оранжевая линия-разделитель */
-    margin-bottom: 15px;
-}
-
-.faq-item:last-child {
-    border-bottom: none; /* Убираем линию у последнего элемента */
-    margin-bottom: 0;
-}
-
-
 .faq-question:hover,
 .faq-question:focus {
-    color: #ff7f00; /* Оранжевый цвет при наведении/фокусе */
+    color: #ff7f00;
 }
 
-/* Иконка для вопроса (+/-) */
 .faq-icon {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px; /* Ширина иконки */
-    height: 20px; /* Высота иконки */
+    width: 20px;
+    height: 20px;
     transition: transform 0.3s ease;
 }
 
@@ -607,52 +431,41 @@ section {
 .faq-icon::after {
     content: '';
     position: absolute;
-    background-color: #ff7f00; /* Оранжевый цвет для плюса/минуса */
+    background-color: #ff7f00;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.faq-icon::before { /* Горизонтальная палочка */
+.faq-icon::before {
     top: 50%;
     left: 0;
     width: 100%;
-    height: 3px; /* Толщина линии */
-    margin-top: -1.5px; /* Центрирование */
+    height: 3px;
+    margin-top: -1.5px;
 }
 
-.faq-icon::after { /* Вертикальная палочка (для +) */
+.faq-icon::after {
     top: 0;
     left: 50%;
-    width: 3px; /* Толщина линии */
+    width: 3px;
     height: 100%;
-    margin-left: -1.5px; /* Центрирование */
+    margin-left: -1.5px;
 }
 
-/* Стили для открытого вопроса (когда кнопка имеет класс .active) */
 .faq-question.active .faq-icon::after {
-    transform: rotate(90deg); /* Поворачиваем вертикальную палочку, чтобы она "исчезла" */
-    opacity: 0; /* Или можно сделать transform: scaleY(0); */
+    transform: rotate(90deg);
+    opacity: 0;
 }
-.faq-question.active .faq-icon { /* Можно немного повернуть сам "+" в "x", если хотите другой эффект */
-    /* transform: translateY(-50%) rotate(45deg); */
-}
-
 
 .faq-answer {
-    /* Изначально скрыт через атрибут 'hidden' в HTML.
-       JavaScript будет управлять этим атрибутом или добавлять класс.
-       Для плавной анимации будем использовать max-height. */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out, padding 0.5s ease-out, opacity 0.3s ease-out; /* Плавный переход */
-    padding: 0 15px; /* Боковые отступы для текста ответа */
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out, opacity 0.3s ease-out;
+    padding: 0 15px;
     color: #c0c0c0;
     opacity: 0;
 }
 
-.faq-answer.active { /* Класс, который будет добавляться JavaScript'ом */
-    /* max-height устанавливается JavaScript'ом для точного значения,
-       но можно задать большое значение, если не хотим JS для этого.
-       Например: max-height: 500px; (должно хватить для большинства ответов) */
+.faq-answer.active {
     padding-top: 10px;
     padding-bottom: 20px;
     opacity: 1;
@@ -668,41 +481,11 @@ section {
     margin-bottom: 0;
 }
 
-/* Адаптивность для секции FAQ */
-
-@media (max-width: 768px) {
-    /* ... другие стили для мобильной версии ... */
-    .faq-question {
-        font-size: 1.1em;
-        /* ИЗМЕНЕНИЕ ЗДЕСЬ: Также добавляем отступ справа на мобильных */
-        padding: 15px 40px 15px 0; 
-    }
-    /* ... */
-}
-    .faq-question {
-        font-size: 1.1em;
-    }
-     .faq-icon {
-        right: 5px; /* Подвинем иконку чуть ближе на мобильных */
-    }
-
-    .faq-answer p {
-        font-size: 1em;
-    }
-}
-.contact-section {
-    padding: 60px 0;
-    /* Фон наследуется от body */
-}
-
-.section-title.contact-title { /* Стили для заголовка "Свяжитесь со мной" */
-    text-align: center;
-    font-size: 2.5em;
-    color: #e0e0e0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff; /* Голубое свечение */
+/* ==========================================================================
+   8. СТИЛИ СЕКЦИИ "КОНТАКТЫ"
+   ========================================================================== */
+.contact-title {
+    text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff;
 }
 
 .contact-intro-text {
@@ -722,22 +505,16 @@ section {
 .contact-links a {
     display: inline-block;
     margin: 0 15px;
-    color: #00f2ff; /* Голубой неоновый цвет для иконок */
-    font-size: 40px; /* Размер контейнера для иконки */
+    color: #00f2ff;
+    font-size: 40px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-links a:hover {
-    color: #ff7f00; /* Оранжевый при наведении */
+    color: #ff7f00;
     transform: scale(1.1);
 }
 
-/* Здесь мы можем добавить SVG или иконочный шрифт, а пока оставим placeholder */
-.contact-icon { 
-    /* Этот класс будет общим для всех иконок, если будем использовать background-image */
-}
-
-/* --- Стили для формы --- */
 #contact-form {
     max-width: 700px;
     margin: 0 auto;
@@ -755,20 +532,13 @@ section {
     text-align: left;
 }
 
-/* --- СТИЛИ ДЛЯ ФОРМЫ (с более заметными границами) --- */
-
-/* --- СТИЛИ ДЛЯ ФОРМЫ (с голубыми границами) --- */
-
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
     padding: 12px;
     background-color: rgba(0, 0, 0, 0.3);
-    
-    /* --- ИЗМЕНЕНИЯ ЗДЕСЬ --- */
-    border: 2px solid #00f2ff; /* Возвращаем ГОЛУБУЮ рамку, оставляем толщину 2px */
-    
+    border: 2px solid #00f2ff;
     border-radius: 5px;
     color: #e0e0e0;
     font-family: 'Exo 2', sans-serif;
@@ -780,13 +550,12 @@ section {
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group textarea:focus {
-    /* --- ИЗМЕНЕНИЯ ЗДЕСЬ --- */
-    border-color: #ff7f00; /* При фокусе рамка все еще будет оранжевой (для контраста) */
-    box-shadow: 0 0 10px #ff7f00; /* Оранжевое свечение при фокусе */
+    border-color: #ff7f00;
+    box-shadow: 0 0 10px #ff7f00;
 }
 
 .form-group textarea {
-    resize: vertical; /* Позволяет изменять высоту textarea только по вертикали */
+    resize: vertical;
 }
 
 .form-submit-group {
@@ -794,3 +563,107 @@ section {
     margin-top: 30px;
 }
 
+
+/* ==========================================================================
+   9. АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* Общие для мобильных */
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    /* Мобильное меню */
+    .main-navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #111;
+    }
+
+    .main-navigation.active {
+        display: block;
+    }
+
+    .main-navigation ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-navigation ul li {
+        margin: 15px 0;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    /* Hero для мобильных */
+    .hero-headline {
+        font-size: 2em;
+    }
+    .hero-subheadline {
+        font-size: 1.2em;
+    }
+
+    /* Обо мне для мобильных */
+    .about-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .subsection-title {
+        font-size: 1.5em;
+    }
+
+    .about-subsection p {
+        font-size: 1em;
+        text-align: justify;
+    }
+
+    /* Услуги для мобильных */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .service-card-title {
+        font-size: 1.4em;
+    }
+
+    .service-card p {
+        font-size: 0.95em;
+    }
+
+    /* Отзывы для мобильных */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-item p {
+        font-size: 1em;
+        padding-left: 25px;
+    }
+    .testimonial-item p::before {
+        font-size: 2.5em;
+    }
+
+    /* FAQ для мобильных */
+    .faq-question {
+        font-size: 1.1em;
+        padding: 15px 40px 15px 0;
+    }
+
+    .faq-icon {
+        right: 5px;
+    }
+
+    .faq-answer p {
+        font-size: 1em;
+    }
+
+}
