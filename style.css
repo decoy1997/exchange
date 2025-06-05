@@ -676,7 +676,6 @@ body {
 }
     .faq-question {
         font-size: 1.1em;
-        padding: 15px 0;
     }
      .faq-icon {
         right: 5px; /* Подвинем иконку чуть ближе на мобильных */
