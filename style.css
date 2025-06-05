@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -543,7 +544,10 @@ section {
 
     /* Мобильное меню */
     .main-navigation {
-        display: none;
+        visibility: hidden; 
+        opacity:0;
+        transform: translateY(-15px); /* Слегка сдвигаем вверх */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
         position: absolute;
         top: 100%;
         left: 0;
@@ -552,7 +556,9 @@ section {
     }
 
     .main-navigation.active {
-        display: block;
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .main-navigation ul {
