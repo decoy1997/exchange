@@ -6,11 +6,16 @@ body {
     color: #e0e0e0; 
     line-height: 1.6;
 }
+section {
+    width: 100%;
+    box-sizing: border-box; /* Это гарантирует, что внутренние отступы (padding) не "сломают" ширину */
+}
+/* -------------------------- */
 
 .container {
     width: 90%;
-    max-width: 1200px; 
-    margin: 0 auto; 
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* --- СТИЛИ ДЛЯ ХЕДЕРА (полная восстановленная версия) --- */
@@ -789,17 +794,3 @@ body {
     margin-top: 30px;
 }
 
-/* --- ВРЕМЕННЫЙ КОД ДЛЯ ОТЛАДКИ --- */
-/* (потом его можно будет удалить) */
-
-body {
-    background-color: darkgreen !important; /* Фон всей страницы станет зеленым */
-}
-
-.contact-section {
-    background-color: darkblue !important; /* Фон секции "Контакты" станет синим */
-}
-
-.container {
-    background-color: yellow !important; /* Фон контейнера внутри секции станет желтым */
-}
