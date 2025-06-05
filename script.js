@@ -13,18 +13,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Дополнительно: Закрытие меню при клике на ссылку в мобильном меню (для одностраничников)
-        const navLinks = mainNav.querySelectorAll('a'); // Убедитесь, что mainNav здесь доступен
-        if (navLinks.length > 0) {
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mainNav.classList.contains('active')) { // Если мобильное меню открыто
-                        mainNav.classList.remove('active');
-                        menuToggle.setAttribute('aria-expanded', 'false');
+        const navLinks = mainNav.querySelectorAll('a');
+if (navLinks.length > 0) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => { // Добавляем 'event' в параметры
+            // Этот код сработает только если мобильное меню открыто
+            if (mainNav.classList.contains('active')) {
+                // 1. Отменяем стандартный мгновенный переход по ссылке
+                event.preventDefault(); 
+
+                // 2. Получаем ID цели (например, "#contact")
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                // 3. Закрываем меню (запускаем CSS-анимацию закрытия)
+                mainNav.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+
+                // 4. Ждем, пока анимация закрытия меню завершится (300ms, как в CSS)
+                setTimeout(() => {
+                    if (targetElement) {
+                        // 5. Плавно прокручиваем к цели (браузер сделает это плавно благодаря scroll-behavior: smooth)
+                        targetElement.scrollIntoView();
                     }
-                });
-            });
-        }
-    } // Конец if (menuToggle && mainNav)
+                }, 300); // Задержка должна соответствовать времени transition в CSS
+            }
+        });
+    });
+}// Конец if (menuToggle && mainNav)
 
     // --- Код для FAQ Accordion ---
     const faqItems = document.querySelectorAll('.faq-item');
