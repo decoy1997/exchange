@@ -538,10 +538,28 @@ body {
     }
 }
 /* --- СТИЛИ ДЛЯ СЕКЦИИ FAQ --- */
-.faq-section {
-    padding: 60px 0;
-    /* Фон наследуется от body (#2E1000) */
+/* --- СТИЛИ ДЛЯ FAQ (ИСПРАВЛЕНИЕ ОТСТУПОВ) --- */
+
+.faq-question {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: none;
+    /* ИЗМЕНЕНИЕ ЗДЕСЬ: Добавляем отступ справа (40px) для иконки */
+    padding: 20px 40px 20px 0; 
+    width: 100%;
+    text-align: left;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    transition: color 0.3s ease;
 }
+
+/* ... остальные стили для .faq-icon, .faq-answer и т.д. остаются без изменений ... */
+
+
 
 .section-title.faq-title { /* Стили для заголовка "FAQ" */
     text-align: center;
@@ -661,12 +679,16 @@ body {
 }
 
 /* Адаптивность для секции FAQ */
-@media (max-width: 768px) {
-    .section-title.faq-title {
-        font-size: 2em;
-        margin-bottom: 30px;
-    }
 
+@media (max-width: 768px) {
+    /* ... другие стили для мобильной версии ... */
+    .faq-question {
+        font-size: 1.1em;
+        /* ИЗМЕНЕНИЕ ЗДЕСЬ: Также добавляем отступ справа на мобильных */
+        padding: 15px 40px 15px 0; 
+    }
+    /* ... */
+}
     .faq-question {
         font-size: 1.1em;
         padding: 15px 0;
