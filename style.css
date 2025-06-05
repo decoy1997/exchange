@@ -685,3 +685,98 @@ body {
         font-size: 1em;
     }
 }
+.contact-section {
+    padding: 60px 0;
+    /* Фон наследуется от body */
+}
+
+.section-title.contact-title { /* Стили для заголовка "Свяжитесь со мной" */
+    text-align: center;
+    font-size: 2.5em;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff; /* Голубое свечение */
+}
+
+.contact-intro-text {
+    text-align: center;
+    color: #c0c0c0;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.contact-links {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-links a {
+    display: inline-block;
+    margin: 0 15px;
+    color: #00f2ff; /* Голубой неоновый цвет для иконок */
+    font-size: 40px; /* Размер контейнера для иконки */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-links a:hover {
+    color: #ff7f00; /* Оранжевый при наведении */
+    transform: scale(1.1);
+}
+
+/* Здесь мы можем добавить SVG или иконочный шрифт, а пока оставим placeholder */
+.contact-icon { 
+    /* Этот класс будет общим для всех иконок, если будем использовать background-image */
+}
+
+/* --- Стили для формы --- */
+#contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c0c0c0;
+    font-weight: bold;
+    text-align: left;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный темный фон */
+    border: 1px solid #00f2ff; /* Голубая неоновая рамка */
+    border-radius: 5px;
+    color: #e0e0e0; /* Цвет вводимого текста */
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #ff7f00; /* Оранжевая рамка при фокусе */
+    box-shadow: 0 0 10px #ff7f00; /* Оранжевое свечение при фокусе */
+}
+
+.form-group textarea {
+    resize: vertical; /* Позволяет изменять высоту textarea только по вертикали */
+}
+
+.form-submit-group {
+    text-align: center;
+    margin-top: 30px;
+}
