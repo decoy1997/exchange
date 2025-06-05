@@ -671,3 +671,15 @@ section {
 
 }
 
+/* --- ФИНАЛЬНЫЙ КОД ДЛЯ ОТЛАДКИ --- */
+body {
+    background-color: red !important; /* Вся страница станет красной */
+}
+
+main {
+    background-color: blue !important; /* Вся основная часть станет синей */
+}
+
+.container {
+    background-color: yellow !important; /* Все контейнеры станут желтыми */
+}
